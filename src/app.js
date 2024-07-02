@@ -10,7 +10,7 @@ function updateWeather(response) {
   let iconElement = document.querySelector("#icon");
   icon.innerHTML = `<img src="${response.data.condition.icon_url}"class="weather-app-icon"/>`;
 
-  console.log(response.data.condition.description);
+  //console.log(response.data.condition.description);
 
   cityElement.innerHTML = response.data.city;
   descriptionElement.innerHTML = response.data.condition.description;
@@ -20,6 +20,8 @@ function updateWeather(response) {
   windSpeedElement.innerHTML = `${response.data.wind.speed} km/p`;
   timeElement.innerHTML = formatDate(date);
   temperatureElement.innerHTML = Math.round(temperature);
+
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -57,7 +59,7 @@ function handleSearchSubmit(event) {
 function getForecast(city) {
   let apiKey = "47befdo353aa10605b3d0f9ft5f53d5a";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  axios(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -85,4 +87,5 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Polokwane");
+
 displayForecast();
