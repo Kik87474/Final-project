@@ -56,12 +56,15 @@ function handleSearchSubmit(event) {
 }
 
 function displayForecast() {
-  let forecast = document.querySelector("#forecast");
+  let forecastElement = document.querySelector("#forecast");
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
 
   days.forEach(function (day) {
-    forecast.innerHTML = `<div class="weather-forecast-day">
+    forecastHtml =
+      forecastHtml +
+      `<div class="weather-forecast-day">
             <div class="weather-forecast-date">${day}</div>
             <div class="weather-forecast-icon">⛅</div>
             <div class="weather-forecast-temperatures">
@@ -72,9 +75,11 @@ function displayForecast() {
             </div>
           </div>`;
   });
-}
 
+  forecastElement.innerHTML = forecastHtml;
+}
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Polokwane");
+displayForecast();
