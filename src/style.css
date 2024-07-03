@@ -1,9 +1,9 @@
 body {
-  background-color: #f9f7fe;
+  background-color: #d5b58a;
   font-family: "Playwrite DE Grund", cursive;
 }
 a {
-  color: plum;
+  color: rgb(109, 18, 109);
 }
 
 .weather-app {
